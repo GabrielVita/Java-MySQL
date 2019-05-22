@@ -14,5 +14,48 @@ public class Jogador {
     private String nome;
     private int idade;
     private String elo;
-    private String quantVitorias;
+    private int quantVitorias;
+
+    public int getQuantVitorias() {
+        return quantVitorias;
+    }
+
+    public void setQuantVitorias(int quantVitorias) {
+        this.quantVitorias = quantVitorias;
+    }
+
+    public int getIdJogador() {
+        return idJogador;
+    }
+
+    public void setIdJogador(int idJogador) {
+        this.idJogador = idJogador;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
+
+    public String getElo() {
+        return elo;
+    }
+
+    public void setElo(String elo) {
+        this.elo = elo;
+    }
+
+   
+    
 }

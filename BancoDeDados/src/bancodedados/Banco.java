@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -36,6 +37,45 @@ public class Banco {
                 }else{
                     return false;
                 }
-                    
+            }
+    
+    
+             
+    public void inserirJogador(Jogador jogador){
+        String sql="Insert into Jogador(Nome,Idade,Elo,qtvitoria)" + 
+                "values('"+jogador.getNome()+"'," + jogador.getIdade()+",'"+ jogador.getElo()+"',"+jogador.getQuantVitorias()+");";     
+        try{
+            declaracao.executeUpdate(sql);
+        }   
+        catch(Exception e){
+            System.out.println("Erro:"+ e.getMessage());
+            }
+    }
+    public ArrayList<Jogador> consultarJogadores(){
+        String sql="Select * from Jogador;";
+        ArrayList<Jogador> jogadores = new ArrayList();
+        try{
+            resultados= declaracao.executeQuery(sql);
+            while(resultados.next()){
+                Jogador jogador = new Jogador();
+                jogador.setNome(resultados.getString("Nome"));
+                jogador.setElo(resultados.getString("elo"));
+                jogador.setIdJogador(resultados.getInt("idJogador"));
+                jogador.setIdade(resultados.getInt("idade"));
+                jogador.setQuantVitorias(resultados.getInt("qtvitoria"));
+                jogadores.add(jogador);
+            }
+        }catch(Exception e){
+            System.out.println("erro:"+e.getMessage());
+        }
+        return jogadores;
+    }
+    public void excluirJogador(int id){
+        String sql="delete from Jogador where idJogador = " +id+";";
+    try{
+    declaracao.executeUpdate(sql);
+    }catch(Exception e){
+    System.out.println("Erro:" + e.getMessage());
+    }
     }
 }
